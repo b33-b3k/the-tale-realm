@@ -10,6 +10,7 @@ exports.createStory = async (req, res) => {
 
         res.status(201).json(story);
     } catch (error) {
+        console.log(error);
         res.status(500).json({ error: 'Failed to create story' });
     }
 };
@@ -55,10 +56,53 @@ exports.deleteStory = async (req, res) => {
 };
 
 
+
 exports.likeStory = async (req, res) => {
-    // Like a story logic here...
+    try {
+        // Check if the user object and userId is present
+        if (!req.userId) {
+            return res.status(400).json({ error: 'User not authenticated' });
+        }
+
+        const userId = req.userId;
+        console.log('User ID:', userId);
+
+        const story = await Story.findById(req.params.storyId);
+        if (!story) {
+            return res.status(404).json({ error: 'Story not found' });
+        }
+
+        // Check if user has already liked the story
+        const index = story.likes.indexOf(userId);
+        if (index === -1) {
+            story.likes.push(userId);
+        } else {
+            story.likes.splice(index, 1);
+        }
+
+        await story.save();
+        res.status(200).json(story);
+
+    } catch (error) {
+        console.error('Error in likeStory:', error.message); // This will log the detailed error message
+        res.status(500).json({ error: 'Failed to like/unlike the story', details: error.message });
+    }
 };
 
+
 exports.shareStory = async (req, res) => {
-    // Share story logic here...
+    try {
+        const story = await Story.findById(req.params.storyId);
+        if (!story) {
+            return res.status(404).json({ error: 'Story not found' });
+        }
+
+        // Increment the share counter
+        story.shares += 1;
+        await story.save();
+
+        res.status(200).json(story);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to share the story' });
+    }
 };

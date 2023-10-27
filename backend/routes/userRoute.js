@@ -11,10 +11,10 @@ router.post('/login', userController.login);
 
 // Profile endpoints (requires token for some operations)
 router.get('/profile/:userId', userController.viewProfile); // Anyone can view a user's profile
-router.put('/profile/:userId', verifyToken, userController.updateProfile); // Only authenticated user can update their profile
+// router.put('/profile/:userId', verifyToken, userController.updateProfile); // Only authenticated user can update their profile
 
 // Follow another user (requires token)
-router.post('/follow/:userId', verifyToken, userController.followUser);
+// router.post('/follow/:userId', verifyToken, userController.followUser);
 
 // Unfollow another user (requires token)
 // router.post('/unfollow/:userId', verifyToken, userController.unfollowUser);
