@@ -114,3 +114,4 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTNiM
 POST http://localhost:5000/stories/653b454a3fe4299d633836c0/share
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTNiMjZhOTQxZGFiNmJiZWVlYjU4ZjkiLCJpYXQiOjE2OTgzODc1MzgsImV4cCI6MTY5ODM5MTEzOH0.CCO3vLFRi0-Bb4x0ecnfT69Aw2xORkhOex3txN30844
 
+//middleware verifytoken next then userId
