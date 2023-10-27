@@ -1,0 +1,118 @@
+### 
+# User Registration
+###
+
+POST http://localhost:3000/users/register HTTP/1.1
+content-type: application/json
+
+{
+  "username": "newUser",
+  "email": "newuser@example.com",
+  "password": "securePassword123"
+}
+
+###
+
+### 
+# User Login
+###
+
+POST http://localhost:3000/users/login HTTP/1.1
+content-type: application/json
+
+{
+  "email": "newuser@example.com",
+  "password": "securePassword123"
+}
+
+###
+
+### 
+# Get User Profile (requires authentication)
+###
+
+GET http://localhost:3000/users/profile HTTP/1.1
+Authorization: Bearer <Your-JWT-Token-Here>
+
+###
+
+### 
+# Update User Profile (requires authentication)
+###
+
+PUT http://localhost:3000/users/profile HTTP/1.1
+content-type: application/json
+Authorization: Bearer <Your-JWT-Token-Here>
+
+{
+  "username": "updatedUser",
+  "email": "updatedemail@example.com"
+}
+
+###
+
+### 
+# Delete User (requires authentication)
+###
+
+DELETE http://localhost:3000/users/delete HTTP/1.1
+Authorization: Bearer <Your-JWT-Token-Here>
+
+###
+
+### 
+# List All Products
+###
+
+GET http://localhost:3000/products HTTP/1.1
+
+###
+
+### 
+# Get Specific Product by ID
+###
+
+GET http://localhost:3000/products/:productID HTTP/1.1
+
+###
+
+### 
+# Create New Product (requires admin authentication)
+###
+
+POST http://localhost:3000/products/new HTTP/1.1
+content-type: application/json
+Authorization: Bearer <Your-JWT-Token-For-Admin>
+
+{
+  "name": "Product Name",
+  "description": "Detailed product description",
+  "price": 99.99
+}
+
+###
+
+### 
+# Update Product by ID (requires admin authentication)
+###
+
+PUT http://localhost:3000/products/:productID HTTP/1.1
+content-type: application/json
+Authorization: Bearer <Your-JWT-Token-For-Admin>
+
+{
+  "name": "Updated Product Name",
+  "description": "Updated product description"
+}
+
+###
+
+### 
+# Delete Product by ID (requires admin authentication)
+###
+
+DELETE http://localhost:3000/products/:productID HTTP/1.1
+Authorization: Bearer <Your-JWT-Token-For-Admin>
+
+###
+
