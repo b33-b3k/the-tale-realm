@@ -1,13 +1,14 @@
 ### 
 # User Registration
 ###
+#
 
 POST http://localhost:5000/users/register HTTP/1.1
 content-type: application/json
 
 {
-  "username": "user1",
-  "email":"user1@gmail.com",
+  "username": "sasa",
+  "email":"sasa@gmail.com",
   "password": "password"
 }
 
@@ -21,7 +22,7 @@ POST http://localhost:5000/users/login HTTP/1.1
 content-type: application/json
 
 {
-  "username": "user1",
+  "username": "sasa",
   "password": "password"
 }
 
@@ -64,12 +65,12 @@ Authorization: Bearer b33b3k
 ### Create a new story
 POST http://localhost:5000/stories/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTNiMjZhOTQxZGFiNmJiZWVlYjU4ZjkiLCJpYXQiOjE2OTgzODc1MzgsImV4cCI6MTY5ODM5MTEzOH0.CCO3vLFRi0-Bb4x0ecnfT69Aw2xORkhOex3txN30844
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTNiMjZhOTQxZGFiNmJiZWVlYjU4ZjkiLCJpYXQiOjE2OTg0MTY5NzcsImV4cCI6MTY5ODQyMDU3N30.oPszqDTmW2uOKv0LUTJodAVHClNxxlLtbxCbSPqQLqM
 
 # id: 653b56a746b3ee6c76b765ac
 #id : 653b5ba0a7e036580e7ef469
 {
-  "title": "My First Story",
+  "title": "My Second Story",
   "content": "This is the content of my first story."
 }
 
@@ -100,8 +101,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTNiM
 ###
 
 ### Like a specific story by ID
-POST http://localhost:5000/stories/653b5ba0a7e036580e7ef469/like
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTNiMjZhOTQxZGFiNmJiZWVlYjU4ZjkiLCJpYXQiOjE2OTgzODkyNTAsImV4cCI6MTY5ODM5Mjg1MH0.zIxAMZf_9XrV3Tz0uxSWjFZfPHmxXn-tdIcaOYvnBoU
+POST http://localhost:5000/stories/653bc977bc9b0e9661eca43d/like
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTNiMjZhOTQxZGFiNmJiZWVlYjU4ZjkiLCJpYXQiOjE2OTg0MTY5NzcsImV4cCI6MTY5ODQyMDU3N30.oPszqDTmW2uOKv0LUTJodAVHClNxxlLtbxCbSPqQLqM
 # Content-Type: application/json
 # {
   
