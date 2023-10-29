@@ -24,6 +24,9 @@ exports.register = async (req, res) => {
 
 
 exports.login = async (req, res) => {
+
+    const users = await User.find();
+    console.log(users)
     const { username, password } = req.body;
 
     const user = await User.findOne({ username });

@@ -1,10 +1,10 @@
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const app = require('./app');
+const Database = require('./config/database');
 
 
 dotenv.config();
+<<<<<<< HEAD
 
 const app = express();
 
@@ -29,18 +29,14 @@ app.get('/', (req, res) => {
     res.send('Welcome to The Tale Realm Backend!');
 });
 
+=======
+>>>>>>> e87faf5f88b45346f7ad16f6397e1d825b790857
 const PORT = process.env.PORT || 5000;
+
+
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
+    console.log(`http://localhost:${PORT}/`);
+    Database.connect();
 });
-
-
-const userRoutes = require('./routes/userRoute');
-const storyRoutes = require('./routes/storyRoute');
-// const commentRoutes = require('./routes/commentRoute');
-
-// Use routes
-app.use('/users', userRoutes);
-app.use('/stories', storyRoutes);
-// app.use('/comments', commentRoutes);
-
