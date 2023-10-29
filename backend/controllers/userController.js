@@ -34,12 +34,6 @@ exports.login = async (req, res) => {
         return res.status(401).json({ error: 'Authentication failed' });
     }
 
-    /*
-    The line below is for testing purposes
-    */
-   const dummy = await bcrypt.hash(password, 10);
-
-
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
         return res.status(401).json({ error: 'Authentication failed' });
