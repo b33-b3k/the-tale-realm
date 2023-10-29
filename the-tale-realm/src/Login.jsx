@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form, Container, Image, Card } from "react-bootstrap";
 import axios from "axios"; // Import axios
+import { BASE_URL } from "./helper";
 
 function LoginPage() {
     const [username, setUsername] = useState("");
@@ -12,7 +13,7 @@ function LoginPage() {
 
         try {
             // Make an HTTP POST request to your backend's login endpoint
-            const response = await axios.post("http://localhost:5000/users/login", {
+            const response = await axios.post(BASE_URL + "users/login", {
                 username,
                 password,
             });
