@@ -24,12 +24,21 @@ exports.register = async (req, res) => {
 
 
 exports.login = async (req, res) => {
+
+    const users = await User.find();
+    console.log(users)
     const { username, password } = req.body;
 
     const user = await User.findOne({ username });
     if (!user) {
         return res.status(401).json({ error: 'Authentication failed' });
     }
+
+    /*
+    The line below is for testing purposes
+    */
+   const dummy = await bcrypt.hash(password, 10);
+
 
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
