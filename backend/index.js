@@ -8,6 +8,7 @@ dotenv.config();
 
 const app = express();
 
+
 // Middleware
 app.use(cors());
 // middleware for parsing request body
