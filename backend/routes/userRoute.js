@@ -9,6 +9,9 @@ const userController = require('../controllers/userController');
 router.post('/register', userController.register);
 router.post('/login', userController.login);
 
+// Get all users (requires token)
+router.get('/all-users', userController.getAllUser);
+
 // Profile endpoints (requires token for some operations)
 router.get('/profile/:userId', userController.viewProfile); // Anyone can view a user's profile
 // router.put('/profile/:userId', verifyToken, userController.updateProfile); // Only authenticated user can update their profile
