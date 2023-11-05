@@ -216,6 +216,71 @@ exports.getUserLikedStories = async (req, res) => {
 
 // ... (other controller functions)
 
+exports.getUserNotifications = async (req, res) => {
+    try {
+        const notifications = await Notification.find({ recipient: req.params.userId });
+        res.json(notifications);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch notifications' });
+    }
+}
+
+exports.markNotificationAsRead = async (req, res) => {
+    try {
+        const notificationId = req.params.notificationId;
+        const notification = await Notification.findById(notificationId);
+        if (!notification) {
+            return res.status(404).json({ error: 'Notification not found' });
+        }
+        notification.read = true;
+        await notification.save();
+        res.json({ message: 'Notification marked as read' });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to mark notification as read' });
+    }
+};
+
+//unfollow users
+exports.unfollowUser = async (req, res) => {
+    const followerId = req.userId;
+    const followingId = req.params.userId;
+
+    try {
+        const userToUnfollow = await User.findById(followingId);
+        const follower = await User.findById(followerId);
+
+        // Check if already following
+        if (!userToUnfollow.followers.includes(followerId)) {
+            return res.status(400).json({ message: "You're not following this user" });
+        }
+
+        userToUnfollow.followers.pull(followerId);
+        follower.following.pull(followingId);
+
+        await userToUnfollow.save();
+        await follower.save();
+
+        res.status(200).json({ message: 'Successfully unfollowed the user' });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to unfollow the user' });
+    }
+};
+
+//get user followers
+exports.getUserFollowers = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.userId).populate('followers');
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        res.status(200).json(user.followers);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to retrieve followers list' });
+    }
+};
+
+
 
 
 
