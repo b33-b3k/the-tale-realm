@@ -135,7 +135,7 @@ Authorization: Bearer your_token_here
 ###!STORY
 
 ### Create a new story
-POST https://tale-realmm.onrender.com/stories/create
+POST http://localhost:5000/stories/create
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQ4NzFhN2Q4YTVkMDNmMjdiZDIwYjgiLCJpYXQiOjE2OTkyNDY1MTcsImV4cCI6MTY5OTI1MDExN30.fAbnpYk5m1sbyDN5x4ls8vbTREQ6iHLCryk-Vb-W9sg
 Content-Type: application/json
 

@@ -4,7 +4,8 @@ const Comment = require('../models/Comment');
 
 
 exports.createStory = async (req, res) => {
-    const { title, content, author } = req.body;
+    const { title, content } = req.body;
+    author = req.userId;
 
     try {
         const story = new Story({ title, content, author });
