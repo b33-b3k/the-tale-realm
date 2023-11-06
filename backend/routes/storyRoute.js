@@ -17,7 +17,7 @@ router.post('/:storyId/like', verifyToken, storyController.likeStory);
 // router.post('/:storyId/unlike', verifyToken, storyController.unlikeStory);
 
 // Comments on a story
-// router.post('/:storyId/comment', verifyToken, storyController.commentOnStory);
+router.post('/:storyId/comment', verifyToken, storyController.commentStory);
 // router.delete('/:storyId/comment/:commentId', verifyToken, storyController.deleteComment);
 
 //share

@@ -1,4 +1,6 @@
 const Story = require('../models/Story');
+const Comment = require('../models/Comment');
+
 
 
 exports.createStory = async (req, res) => {
@@ -94,15 +96,56 @@ exports.shareStory = async (req, res) => {
     try {
         const story = await Story.findById(req.params.storyId);
         if (!story) {
+            console.error('Story not found');
+            return res.status(404).json({ error: 'Story not found' });
+        }
+        if (!req.userId) {
+            console.error('User not authenticated');
+            return res.status(400).json({ error: 'User not authenticated' });
+        }
+
+        const userId = req.userId;
+        console.log('User ID:', userId);
+
+        // Add the user's ID to sharedBy
+        story.sharedBy.push(userId);
+
+        await story.save();
+
+        console.log('Story shared successfully');
+        res.status(200).json(story);
+    } catch (error) {
+        console.error('Failed to share the story:', error);
+        res.status(500).json({ error: 'Failed to share the story' });
+    }
+};
+
+
+exports.commentStory = async (req, res) => {
+    try {
+        const { storyId } = req.params;
+        const { content } = req.body;
+
+        const story = await Story.findById(storyId);
+        if (!story) {
             return res.status(404).json({ error: 'Story not found' });
         }
 
-        // Increment the share counter
-        story.shares += 1;
+        const author = req.userId; // Assuming you have user information in the request
+
+        const comment = new Comment({
+            content,
+            author,
+        });
+
+        await comment.save();
+
+        story.comments.push(comment._id);
         await story.save();
 
         res.status(200).json(story);
     } catch (error) {
-        res.status(500).json({ error: 'Failed to share the story' });
+        console.error('Failed to comment on the story:', error);
+        res.status(500).json({ error: 'Failed to comment on the story' });
     }
 };

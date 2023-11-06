@@ -1,14 +1,18 @@
+
+
 ### 
 # User Registration
 ###
 #
 
-POST http://localhost:5000/users/register HTTP/1.1
+
+
+POST https://tale-realmm.onrender.com/users/register HTTP/1.1
 content-type: application/json
 
 {
-  "username": "sasa",
-  "email":"sasa@gmail.com",
+  "username": "bibek",
+  "email":"bibek@gmail.com",
   "password": "password"
 }
 
@@ -24,9 +28,10 @@ POST https://tale-realmm.onrender.com/users/login HTTP/1.1
 content-type: application/json
 
 {
-  "username": "sasa",
+  "username": "bibek",
   "password": "password"
 }
+//653bd0d6f31b885a67a85078
 
 ###
 
@@ -34,7 +39,7 @@ content-type: application/json
 # Get User Profile (requires authentication)
 ###
 
-GET http://localhost:5000/users/profile/653b26a941dab6bbeeeb58f9 HTTP/1.1
+GET https://tale-realmm.onrender.com/users/profile/653bd0d6f31b885a67a85078 HTTP/1.1
 Authorization: Bearer b33b3k
 
 ###
@@ -43,7 +48,7 @@ Authorization: Bearer b33b3k
 # Update User Profile (requires authentication)
 ###
 
-PUT http://localhost:5000/users/profile HTTP/1.1
+PUT https://tale-realmm.onrender.com/users/profile HTTP/1.1
 content-type: application/json
 Authorization: Bearer b33b3k
 
@@ -53,38 +58,101 @@ Authorization: Bearer b33b3k
   "email": "user2@example.com"
 }
 
+
+# Get all users
+###
+
+GET https://tale-realmm.onrender.com/all-users HTTP/1.1
+
 ###
 
 ### 
-# Delete User (requires authentication)
+# View User Profile
 ###
 
-# DELETE http://localhost:5000/users/delete HTTP/1.1
-# Authorization: Bearer <Your-JWT-Token-Here>
+GET https://tale-realmm.onrender.com/profile/653b26a941dab6bbeeeb58f9 HTTP/1.1
+
+###
+
+### 
+# Update User Profile
+###
+
+PUT https://tale-realmm.onrender.com/profile/653b26a941dab6bbeeeb58f9 HTTP/1.1
+content-type: application/json
+Authorization: Bearer b33b3k
+
+{
+  "username": "bibek",
+  "email": "bibek@example.com"
+}
+
+###
+
+### 
+# Unfollow User
+###
+
+POST https://tale-realmm.onrender.com/unfollow/653b26a941dab6bbeeeb58f9 HTTP/1.1
+Authorization: Bearer your_token_here
+
+###
+
+### 
+# Get User Following
+###
+
+GET https://tale-realmm.onrender.com/following/653b26a941dab6bbeeeb58f9 HTTP/1.1
+Authorization: Bearer your_token_here
+
+###
+
+### 
+# Get User Stories
+###
+
+GET https://tale-realmm.onrender.com/stories/653b26a941dab6bbeeeb58f9 HTTP/1.1
+Authorization: Bearer your_token_here
+
+###
+
+### 
+# Get User Liked Stories
+###
+
+GET https://tale-realmm.onrender.com/liked-stories/653b26a941dab6bbeeeb58f9 HTTP/1.1
+Authorization: Bearer your_token_here
+
+###
+
+### 
+# Get User Notifications
+###
+
+GET https://tale-realmm.onrender.com/notifications/653b26a941dab6bbeeeb58f9 HTTP/1.1
+Authorization: Bearer your_token_here
 
 ###!STORY
 
 ### Create a new story
-POST http://localhost:5000/stories/create
+POST https://tale-realmm.onrender.com/stories/create
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQ4NzFhN2Q4YTVkMDNmMjdiZDIwYjgiLCJpYXQiOjE2OTkyNDY1MTcsImV4cCI6MTY5OTI1MDExN30.fAbnpYk5m1sbyDN5x4ls8vbTREQ6iHLCryk-Vb-W9sg
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTNiMjZhOTQxZGFiNmJiZWVlYjU4ZjkiLCJpYXQiOjE2OTg0MTY5NzcsImV4cCI6MTY5ODQyMDU3N30.oPszqDTmW2uOKv0LUTJodAVHClNxxlLtbxCbSPqQLqM
 
-# id: 653b56a746b3ee6c76b765ac
-#id : 653b5ba0a7e036580e7ef469
 {
-  "title": "My Second Story",
+  "title": "My FIrst Story",
   "content": "This is the content of my first story."
 }
 
 ###
 
 ### View a specific story by ID
-GET http://localhost:5000/stories/653b56a746b3ee6c76b765ac
+GET https://tale-realmm.onrender.com/stories/654871ecd8a5d03f27bd20c0
 
 ###
 
 ### Update a specific story by ID
-PUT http://localhost:5000/stories/653b454a3fe4299d633836c0
+PUT https://tale-realmm.onrender.com/stories/653b454a3fe4299d633836c0
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTNiMjZhOTQxZGFiNmJiZWVlYjU4ZjkiLCJpYXQiOjE2OTgzODc1MzgsImV4cCI6MTY5ODM5MTEzOH0.CCO3vLFRi0-Bb4x0ecnfT69Aw2xORkhOex3txN30844
 
@@ -96,16 +164,15 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTNiM
 ###
 
 ### Delete a specific story by ID
-DELETE http://localhost:5000/stories/653b454a3fe4299d633836c0
+DELETE https://tale-realmm.onrender.com/stories/653b454a3fe4299d633836c0
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTNiMjZhOTQxZGFiNmJiZWVlYjU4ZjkiLCJpYXQiOjE2OTgzODc1MzgsImV4cCI6MTY5ODM5MTEzOH0.CCO3vLFRi0-Bb4x0ecnfT69Aw2xORkhOex3txN30844
 
 
 ###
 
 ### Like a specific story by ID
-POST http://localhost:5000/stories/653bc977bc9b0e9661eca43d/like
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTNiMjZhOTQxZGFiNmJiZWVlYjU4ZjkiLCJpYXQiOjE2OTg0MTY5NzcsImV4cCI6MTY5ODQyMDU3N30.oPszqDTmW2uOKv0LUTJodAVHClNxxlLtbxCbSPqQLqM
-# Content-Type: application/json
+POST https://tale-realmm.onrender.com/stories/654871ecd8a5d03f27bd20c0/like
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQ4NzFhN2Q4YTVkMDNmMjdiZDIwYjgiLCJpYXQiOjE2OTkyNDY1MTcsImV4cCI6MTY5OTI1MDExN30.fAbnpYk5m1sbyDN5x4ls8vbTREQ6iHLCryk-Vb-W9sg
 # {
   
 # }
@@ -114,7 +181,21 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTNiM
 ###
 
 ### Share a specific story by ID
-POST http://localhost:5000/stories/653b454a3fe4299d633836c0/share
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTNiMjZhOTQxZGFiNmJiZWVlYjU4ZjkiLCJpYXQiOjE2OTgzODc1MzgsImV4cCI6MTY5ODM5MTEzOH0.CCO3vLFRi0-Bb4x0ecnfT69Aw2xORkhOex3txN30844
+POST http://localhost:5000/stories/654871ecd8a5d03f27bd20c0/share
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQ4NzFhN2Q4YTVkMDNmMjdiZDIwYjgiLCJpYXQiOjE2OTkyNDY1MTcsImV4cCI6MTY5OTI1MDExN30.fAbnpYk5m1sbyDN5x4ls8vbTREQ6iHLCryk-Vb-W9sg
 
-//middleware verifytoken next then userId
+
+###comment
+POST http://localhost:5000/stories/654871ecd8a5d03f27bd20c0/comment
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQ4NzFhN2Q4YTVkMDNmMjdiZDIwYjgiLCJpYXQiOjE2OTkyNDY1MTcsImV4cCI6MTY5OTI1MDExN30.fAbnpYk5m1sbyDN5x4ls8vbTREQ6iHLCryk-Vb-W9sg
+Content-Type: application/json
+
+{
+  "content": "Very nice story.",
+  "author": "653bd0d6f31b885a67a85078"
+}
+
+
+
+
+
