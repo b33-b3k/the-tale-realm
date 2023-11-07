@@ -8,7 +8,7 @@ const authenticate = require('../middlewares/authenticate');
 
 // Story CRUD
 router.post('/create', verifyToken, storyController.createStory);
-router.get('/:storyId', storyController.viewStory);
+router.get('/:storyId', verifyToken, storyController.viewStory);
 router.put('/:storyId', verifyToken, storyController.updateStory);
 router.delete('/:storyId', verifyToken, storyController.deleteStory);
 

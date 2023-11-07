@@ -1,16 +1,29 @@
 const Story = require('../models/Story');
 const Comment = require('../models/Comment');
+const User = require('../models/User');
+
 
 
 
 exports.createStory = async (req, res) => {
     const { title, content } = req.body;
-    author = req.userId;
+    const author = req.userId; // Ensure this is declared with const or let
+    console.log("userid" + author)
 
     try {
+        // Create and save the new story
         const story = new Story({ title, content, author });
+
         await story.save();
 
+        // Find the user by ID and update their stories array
+        await User.findByIdAndUpdate(
+            author,
+            { $push: { stories: story._id } }, // Push the new story's ID to the user's stories array
+            { new: true, useFindAndModify: false } // Return the updated user object and use the new method for findByIdAndUpdate
+        );
+
+        // Respond with the created story
         res.status(201).json(story);
     } catch (error) {
         console.log(error);

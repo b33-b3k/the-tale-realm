@@ -37,6 +37,9 @@ router.get('/liked-stories/:userId', verifyToken, userController.getUserLikedSto
 // Get all notifications of a user (requires token)
 router.get('/notifications/:userId', verifyToken, userController.getUserNotifications);
 
+// add to reading list
+router.post('/reading-list/:userId', verifyToken, userController.addStoryToReadingList);
+
 
 
 
