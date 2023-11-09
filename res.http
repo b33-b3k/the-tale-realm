@@ -28,7 +28,7 @@ POST http://localhost:5000/users/login HTTP/1.1
 content-type: application/json
 
 {
-  "username": "sasa",
+  "username": "bibek",
   "password": "password"
 }
 //653bd0d6f31b885a67a85078
@@ -39,7 +39,7 @@ content-type: application/json
 # Get User Profile (requires authentication)
 ###
 
-GET http://localhost:5000/users/profile/653bd0d6f31b885a67a85078 HTTP/1.1
+GET https://tale-realmm.onrender.com/users/profile/654871a7d8a5d03f27bd20b8 HTTP/1.1
 Authorization: Bearer b33b3k
 
 ###
@@ -100,7 +100,7 @@ Authorization: Bearer your_token_here
 ###
 
 GET http://localhost:5000/following/653b26a941dab6bbeeeb58f9 HTTP/1.1
-Authorization: Bearer your_token_here
+Authorization: Bearer b33b3k
 
 ###
 
@@ -199,13 +199,20 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQ4N
 
 ###comment
 POST http://localhost:5000/stories/654871ecd8a5d03f27bd20c0/comment
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQ4NzFhN2Q4YTVkMDNmMjdiZDIwYjgiLCJpYXQiOjE2OTkyNDY1MTcsImV4cCI6MTY5OTI1MDExN30.fAbnpYk5m1sbyDN5x4ls8vbTREQ6iHLCryk-Vb-W9sg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQ4NzFhN2Q4YTVkMDNmMjdiZDIwYjgiLCJpYXQiOjE2OTk1MzQyNDMsImV4cCI6MTY5OTYyMDY0M30.R8NHOe3VURZlktiVCYjzbOc0Qo7zh574-bpBqj8VATU
 Content-Type: application/json
 
 {
-  "content": "Very nice story.",
-  "author": "653bd0d6f31b885a67a85078"
+  "content": "Check."
 }
+
+###get comment from stories
+GET http://localhost:5000/comment/1212
+
+###get comment from stories
+
+
+
 
 
 

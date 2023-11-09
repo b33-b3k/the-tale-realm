@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
 
+
 dotenv.config();
 
 const app = express();
@@ -37,10 +38,10 @@ app.listen(PORT, () => {
 
 const userRoutes = require('./routes/userRoute');
 const storyRoutes = require('./routes/storyRoute');
-// const commentRoutes = require('./routes/commentRoute');
+const commentRoutes = require('./routes/commentRoute');
 
 // Use routes
 app.use('/users', userRoutes);
 app.use('/stories', storyRoutes);
-// app.use('/comments', commentRoutes);
+app.use('/comments', commentRoutes);
 

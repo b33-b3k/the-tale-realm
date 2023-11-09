@@ -3,8 +3,10 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 
+
 const userRoutes = require('./routes/userRoute');
 const storyRoutes = require('./routes/storyRoute');
+const commentRoutes = require('./routes/commentRoute');
 
 const app = express();
 
@@ -15,8 +17,7 @@ app.use(bodyParser.json())
 app.use(cors());
 
 
-app.use('/users', userRoutes);
-app.use('/stories', storyRoutes);
+
 
 
 

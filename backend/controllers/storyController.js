@@ -140,6 +140,11 @@ exports.commentStory = async (req, res) => {
         const { storyId } = req.params;
         const { content } = req.body;
 
+        if (!content) {
+            return res.status(400).json({ error: 'Content is required for a comment' });
+        }
+
+        // Check if the story exists
         const story = await Story.findById(storyId);
         if (!story) {
             return res.status(404).json({ error: 'Story not found' });
@@ -147,19 +152,24 @@ exports.commentStory = async (req, res) => {
 
         const author = req.userId; // Assuming you have user information in the request
 
+        // Create a new comment
         const comment = new Comment({
             content,
             author,
+            story: story._id  // Set the story field to the ID of the story
         });
 
+        // Save the comment
         await comment.save();
 
+        // Push the comment's ID to the story's comments array
         story.comments.push(comment._id);
         await story.save();
 
-        res.status(200).json(story);
+        // Return the newly created comment
+        res.status(200).json(comment);
     } catch (error) {
         console.error('Failed to comment on the story:', error);
-        res.status(500).json({ error: 'Failed to comment on the story' });
+        res.status(500).json({ error: 'Failed to comment on the story', details: error.message });
     }
 };
