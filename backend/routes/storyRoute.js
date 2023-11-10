@@ -23,4 +23,13 @@ router.post('/:storyId/comment', verifyToken, storyController.commentStory);
 //share
 router.post('/:storyId/share', verifyToken, storyController.shareStory);
 
+
+router.get('/', storyController.getAllStories);
+router.get('/search/story', storyController.searchStory);
+
+router.use((req, res, next) => {
+    res.status(404)
+    res.send({ error: 'Invalid Endpoint For Stories' })
+});
+
 module.exports = router;

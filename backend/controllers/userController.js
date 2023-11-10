@@ -2,6 +2,7 @@ const User = require('../models/User');
 
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { default: sendMail } = require('./mail/node_mailer');
 
 
 exports.register = async (req, res) => {
@@ -40,7 +41,7 @@ exports.login = async (req, res) => {
     }
 
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '24h' });
-    console.log(token)
+    res.cookie('token', token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 }); // 24h
     res.json({ token, userId: user._id });
 };
 
@@ -280,7 +281,23 @@ exports.getUserFollowers = async (req, res) => {
     }
 };
 
+exports.logout = async (req, res) => {
+    try {
+        res.clearCookie('token');
+        res.status(200).json({ message: 'Successfully logged out' });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to logout' });
+    }
+};
 
 
-
-
+exports.forgotPassword= async (req, res) => {
+    try{
+        console.log(req.body)
+        sendMail();
+        res.send(req.body);
+    }
+    catch(error){
+        res.status(500).json({ error: error });
+    }
+}

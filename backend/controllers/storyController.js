@@ -1,5 +1,6 @@
 const Story = require('../models/Story');
 const Comment = require('../models/Comment');
+const User = require('../models/User');
 
 
 
@@ -150,3 +151,36 @@ exports.commentStory = async (req, res) => {
         res.status(500).json({ error: 'Failed to comment on the story' });
     }
 };
+
+exports.getAllStories = async (req, res) => {
+    try {
+        const stories = await Story.find();
+        res.status(200).json(stories);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch stories' });
+    }
+};
+
+exports.searchStory = async (req, res) => {
+    try {
+        const titleQuery = new RegExp(req.query.title, 'i');
+        const author = await User.find({ username: { $regex: titleQuery } });
+        const stories = await Story.find({ title: { $regex: titleQuery } });
+        
+        const authors = author
+        const story = stories
+
+        const final_response= {
+            authors : authors,
+            stories : story
+        }
+
+        if (!final_response){
+            return res.status(404).json({ error: 'Story not found' });
+        }
+        res.status(200).json(final_response);
+    } catch (error) {
+        console.error('Failed:', error);
+        res.status(500).json({ error: 'Failed to search for stories' });
+    }
+}

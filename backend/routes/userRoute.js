@@ -38,7 +38,7 @@ router.get('/liked-stories/:userId', verifyToken, userController.getUserLikedSto
 router.get('/notifications/:userId', verifyToken, userController.getUserNotifications);
 
 
-
+router.post('/forgot_password', userController.forgotPassword);
 
 
 
