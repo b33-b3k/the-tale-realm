@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
     password: { type: String, required: true },
     profilePicture: { type: String }, // Consider storing a URL if you're using cloud storage like AWS S3
     bio: { type: String, default: '' },
+    location: { type: String },
     stories: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Story' }],
     likedStories: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Story' }],
     followers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
@@ -15,6 +16,7 @@ const userSchema = new mongoose.Schema({
     genres: [{ type: String }],
     notifications: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Notification' }],
     readingList: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Story' }]
+
 });
 
 module.exports = mongoose.model('User', userSchema);

@@ -7,7 +7,7 @@
 
 
 
-POST https://tale-realmm.onrender.com/users/register HTTP/1.1
+POST http://localhost:5000/users/register HTTP/1.1
 content-type: application/json
 
 {
@@ -24,7 +24,7 @@ content-type: application/json
 # User Login
 ###
 
-POST https://tale-realmm.onrender.com/users/login HTTP/1.1
+POST http://localhost:5000/users/login HTTP/1.1
 content-type: application/json
 
 {
@@ -39,7 +39,7 @@ content-type: application/json
 # Get User Profile (requires authentication)
 ###
 
-GET https://tale-realmm.onrender.com/users/profile/653bd0d6f31b885a67a85078 HTTP/1.1
+GET https://tale-realmm.onrender.com/users/profile/654871a7d8a5d03f27bd20b8 HTTP/1.1
 Authorization: Bearer b33b3k
 
 ###
@@ -48,7 +48,7 @@ Authorization: Bearer b33b3k
 # Update User Profile (requires authentication)
 ###
 
-PUT https://tale-realmm.onrender.com/users/profile HTTP/1.1
+PUT http://localhost:5000/users/profile HTTP/1.1
 content-type: application/json
 Authorization: Bearer b33b3k
 
@@ -62,15 +62,12 @@ Authorization: Bearer b33b3k
 # Get all users
 ###
 
-GET https://tale-realmm.onrender.com/all-users HTTP/1.1
+GET http://localhost:5000/all-users HTTP/1.1
 
 ###
 
 ### 
-# View User Profile
-###
 
-GET https://tale-realmm.onrender.com/profile/653b26a941dab6bbeeeb58f9 HTTP/1.1
 
 ###
 
@@ -78,7 +75,7 @@ GET https://tale-realmm.onrender.com/profile/653b26a941dab6bbeeeb58f9 HTTP/1.1
 # Update User Profile
 ###
 
-PUT https://tale-realmm.onrender.com/profile/653b26a941dab6bbeeeb58f9 HTTP/1.1
+PUT http://localhost:5000/profile/653b26a941dab6bbeeeb58f9 HTTP/1.1
 content-type: application/json
 Authorization: Bearer b33b3k
 
@@ -93,7 +90,7 @@ Authorization: Bearer b33b3k
 # Unfollow User
 ###
 
-POST https://tale-realmm.onrender.com/unfollow/653b26a941dab6bbeeeb58f9 HTTP/1.1
+POST http://localhost:5000/unfollow/653b26a941dab6bbeeeb58f9 HTTP/1.1
 Authorization: Bearer your_token_here
 
 ###
@@ -102,8 +99,8 @@ Authorization: Bearer your_token_here
 # Get User Following
 ###
 
-GET https://tale-realmm.onrender.com/following/653b26a941dab6bbeeeb58f9 HTTP/1.1
-Authorization: Bearer your_token_here
+GET http://localhost:5000/following/653b26a941dab6bbeeeb58f9 HTTP/1.1
+Authorization: Bearer b33b3k
 
 ###
 
@@ -111,8 +108,8 @@ Authorization: Bearer your_token_here
 # Get User Stories
 ###
 
-GET https://tale-realmm.onrender.com/stories/653b26a941dab6bbeeeb58f9 HTTP/1.1
-Authorization: Bearer your_token_here
+GET http://localhost:5000/users/stories/653b26a941dab6bbeeeb58f9 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQ4NzFhN2Q4YTVkMDNmMjdiZDIwYjgiLCJpYXQiOjE2OTkzNjA4MjQsImV4cCI6MTY5OTQ0NzIyNH0.zMH5eQU1kGFi9vAkZeJYUKBHVbSnO6h_Uk0kAjUd3CU
 
 ###
 
@@ -120,7 +117,7 @@ Authorization: Bearer your_token_here
 # Get User Liked Stories
 ###
 
-GET https://tale-realmm.onrender.com/liked-stories/653b26a941dab6bbeeeb58f9 HTTP/1.1
+GET http://localhost:5000/liked-stories/653b26a941dab6bbeeeb58f9 HTTP/1.1
 Authorization: Bearer your_token_here
 
 ###
@@ -129,14 +126,29 @@ Authorization: Bearer your_token_here
 # Get User Notifications
 ###
 
-GET https://tale-realmm.onrender.com/notifications/653b26a941dab6bbeeeb58f9 HTTP/1.1
+GET http://localhost:5000/notifications/653b26a941dab6bbeeeb58f9 HTTP/1.1
 Authorization: Bearer your_token_here
+
+
+###
+# Add to reading listq1
+###
+POST http://localhost:5000//reading-list/:userId
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQ4NzFhN2Q4YTVkMDNmMjdiZDIwYjgiLCJpYXQiOjE2OTkyNDY1MTcsImV4cCI6MTY5OTI1MDExN30.fAbnpYk5m1sbyDN5x4ls8vbTREQ6iHLCryk-Vb-W9sg
+Content-Type: application/json
+{
+  "storyId": "653bd0d6f31b885a67a85078"
+
+}
+
+
+
 
 ###!STORY
 
 ### Create a new story
 POST http://localhost:5000/stories/create
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQ4NzFhN2Q4YTVkMDNmMjdiZDIwYjgiLCJpYXQiOjE2OTkyNDY1MTcsImV4cCI6MTY5OTI1MDExN30.fAbnpYk5m1sbyDN5x4ls8vbTREQ6iHLCryk-Vb-W9sg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQ4NzFhN2Q4YTVkMDNmMjdiZDIwYjgiLCJpYXQiOjE2OTkzNjA4MjQsImV4cCI6MTY5OTQ0NzIyNH0.zMH5eQU1kGFi9vAkZeJYUKBHVbSnO6h_Uk0kAjUd3CU
 Content-Type: application/json
 
 {
@@ -147,12 +159,12 @@ Content-Type: application/json
 ###
 
 ### View a specific story by ID
-GET https://tale-realmm.onrender.com/stories/654871ecd8a5d03f27bd20c0
+GET http://localhost:5000/stories/654871ecd8a5d03f27bd20c0
 
 ###
 
 ### Update a specific story by ID
-PUT https://tale-realmm.onrender.com/stories/653b454a3fe4299d633836c0
+PUT http://localhost:5000/stories/653b454a3fe4299d633836c0
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTNiMjZhOTQxZGFiNmJiZWVlYjU4ZjkiLCJpYXQiOjE2OTgzODc1MzgsImV4cCI6MTY5ODM5MTEzOH0.CCO3vLFRi0-Bb4x0ecnfT69Aw2xORkhOex3txN30844
 
@@ -164,14 +176,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTNiM
 ###
 
 ### Delete a specific story by ID
-DELETE https://tale-realmm.onrender.com/stories/653b454a3fe4299d633836c0
+DELETE http://localhost:5000/stories/653b454a3fe4299d633836c0
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTNiMjZhOTQxZGFiNmJiZWVlYjU4ZjkiLCJpYXQiOjE2OTgzODc1MzgsImV4cCI6MTY5ODM5MTEzOH0.CCO3vLFRi0-Bb4x0ecnfT69Aw2xORkhOex3txN30844
 
 
 ###
 
 ### Like a specific story by ID
-POST https://tale-realmm.onrender.com/stories/654871ecd8a5d03f27bd20c0/like
+POST http://localhost:5000/stories/654871ecd8a5d03f27bd20c0/like
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQ4NzFhN2Q4YTVkMDNmMjdiZDIwYjgiLCJpYXQiOjE2OTkyNDY1MTcsImV4cCI6MTY5OTI1MDExN30.fAbnpYk5m1sbyDN5x4ls8vbTREQ6iHLCryk-Vb-W9sg
 # {
   
@@ -187,13 +199,22 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQ4N
 
 ###comment
 POST http://localhost:5000/stories/654871ecd8a5d03f27bd20c0/comment
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQ4NzFhN2Q4YTVkMDNmMjdiZDIwYjgiLCJpYXQiOjE2OTkyNDY1MTcsImV4cCI6MTY5OTI1MDExN30.fAbnpYk5m1sbyDN5x4ls8vbTREQ6iHLCryk-Vb-W9sg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQ4NzFhN2Q4YTVkMDNmMjdiZDIwYjgiLCJpYXQiOjE2OTk1MzQyNDMsImV4cCI6MTY5OTYyMDY0M30.R8NHOe3VURZlktiVCYjzbOc0Qo7zh574-bpBqj8VATU
 Content-Type: application/json
 
 {
-  "content": "Very nice story.",
-  "author": "653bd0d6f31b885a67a85078"
+  "content": "Check."
 }
+
+###get comment from stories
+GET http://localhost:5000/comment/1212
+
+###get comment from stories
+
+
+
+
+
 
 
 

@@ -10,6 +10,7 @@ const storySchema = new mongoose.Schema({
     genre: { type: String },
     views: { type: Number, default: 0 },
     published: { type: Boolean, default: false },
+
     publishedAt: { type: Date },
     coverImage: { type: String },
     followers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],

@@ -2,15 +2,16 @@ const express = require('express');
 const router = express.Router();
 const storyController = require('../controllers/storyController');
 const verifyToken = require('../middlewares/verifytoken');
-const authenticate = require('../middlewares/authenticate');
 
 
 
 // Story CRUD
 router.post('/create', verifyToken, storyController.createStory);
-router.get('/:storyId', storyController.viewStory);
+router.get('/:storyId', verifyToken, storyController.viewStory);
 router.put('/:storyId', verifyToken, storyController.updateStory);
 router.delete('/:storyId', verifyToken, storyController.deleteStory);
+
+
 
 // Like and Unlike a story
 router.post('/:storyId/like', verifyToken, storyController.likeStory);
