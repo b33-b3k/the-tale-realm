@@ -301,3 +301,23 @@ exports.forgotPassword= async (req, res) => {
         res.status(500).json({ error: error });
     }
 }
+
+exports.bookmarkStory = async (req, res) => {
+    const userId = req.userId;
+    const storyId = req.params.storyId;
+
+    try {
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        if (user.readingList.includes(storyId)) {
+            return res.status(400).json({ message: 'Story already added to reading list' });
+        }
+        user.readingList.push(storyId);
+        await user.save();
+        res.status(200).json({ message: 'Story added to reading list' });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to add story to reading list' });
+    }
+}
