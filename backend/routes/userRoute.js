@@ -41,7 +41,7 @@ router.get('/notifications/:userId', verifyToken, userController.getUserNotifica
 router.post('/reading-list/:userId', verifyToken, userController.addStoryToReadingList);
 
 
-
+router.post('/forgot_password', userController.forgotPassword);
 
 
 
