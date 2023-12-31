@@ -215,7 +215,14 @@ GET  https://tale-realmm.onrender.com/comment/1212
 
 ### forgot password
 POST https://tale-realmm.onrender.com/forgot_password
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQ4NzFhN2Q4YTVkMDNmMjdiZDIwYjgiLCJpYXQiOjE3MDQwNDE3OTUsImV4cCI6MTcwNDEyODE5NX0.4FaCtC3--9E5Ft2-fX3FkEYKhUWVqNc0jhn3BwfG4nE
+Content-Type: application/json
+
+{
+  "email": "beebek2004@gmail.com."
+}
+
+
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQ4NzFhN2Q4YTVkMDNmMjdiZDIwYjgiLCJpYXQiOjE3MDQwNDE3OTUsImV4cCI6MTcwNDEyODE5NX0.4FaCtC3--9E5Ft2-fX3FkEYKhUWVqNc0jhn3BwfG4nE
 
 
 
