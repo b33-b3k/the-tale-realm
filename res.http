@@ -24,7 +24,7 @@ content-type: application/json
 # User Login
 ###
 
-POST http://localhost:5000/users/login HTTP/1.1
+POST https://tale-realmm.onrender.com/users/login HTTP/1.1
 content-type: application/json
 
 {
@@ -127,7 +127,7 @@ Authorization: Bearer your_token_here
 ###
 
 GET http://localhost:5000/notifications/653b26a941dab6bbeeeb58f9 HTTP/1.1
-Authorization: Bearer your_token_here
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQ4NzFhN2Q4YTVkMDNmMjdiZDIwYjgiLCJpYXQiOjE3MDQwNDE4NTYsImV4cCI6MTcwNDEyODI1Nn0.g2wktSrmxuRdEBNwHfh43uPG9YN_CmHj5YZloLTa_Gg
 
 
 ###
@@ -198,8 +198,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQ4N
 
 
 ###comment
-POST http://localhost:5000/stories/654871ecd8a5d03f27bd20c0/comment
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQ4NzFhN2Q4YTVkMDNmMjdiZDIwYjgiLCJpYXQiOjE2OTk1MzQyNDMsImV4cCI6MTY5OTYyMDY0M30.R8NHOe3VURZlktiVCYjzbOc0Qo7zh574-bpBqj8VATU
+POST  https://tale-realmm.onrender.com/stories/654871ecd8a5d03f27bd20c0/comment
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQ4NzFhN2Q4YTVkMDNmMjdiZDIwYjgiLCJpYXQiOjE3MDQwNDE4NTYsImV4cCI6MTcwNDEyODI1Nn0.g2wktSrmxuRdEBNwHfh43uPG9YN_CmHj5YZloLTa_Gg
 Content-Type: application/json
 
 {
@@ -207,12 +207,15 @@ Content-Type: application/json
 }
 
 ###get comment from stories
-GET http://localhost:5000/comment/1212
+GET  https://tale-realmm.onrender.com/comment/1212
 
 ###get comment from stories
 
 
 
+### forgot password
+POST https://tale-realmm.onrender.com/forgot_password
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTQ4NzFhN2Q4YTVkMDNmMjdiZDIwYjgiLCJpYXQiOjE3MDQwNDE3OTUsImV4cCI6MTcwNDEyODE5NX0.4FaCtC3--9E5Ft2-fX3FkEYKhUWVqNc0jhn3BwfG4nE
 
 
 
