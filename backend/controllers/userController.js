@@ -2,6 +2,7 @@ const User = require('../models/User');
 
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { default: sendMail } = require('./mail/node_mailer');
 
 
 exports.register = async (req, res) => {
@@ -40,7 +41,7 @@ exports.login = async (req, res) => {
     }
 
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '24h' });
-    console.log(token)
+    res.cookie('token', token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 }); // 24h
     res.json({ token, userId: user._id });
 };
 
@@ -280,3 +281,46 @@ exports.getUserFollowers = async (req, res) => {
     }
 };
 
+
+exports.logout = async (req, res) => {
+    try {
+        res.clearCookie('token');
+        res.status(200).json({ message: 'Successfully logged out' });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to logout' });
+    }
+};
+
+
+
+exports.forgotPassword = async (req, res) => {
+    try {
+        console.log(req.body)
+        sendMail();
+        res.send(req.body);
+    }
+    catch (error) {
+        res.status(500).json({ error: error });
+    }
+}
+
+exports.bookmarkStory = async (req, res) => {
+    const userId = req.userId;
+    const storyId = req.params.storyId;
+
+    try {
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        if (user.readingList.includes(storyId)) {
+            return res.status(400).json({ message: 'Story already added to reading list' });
+        }
+        user.readingList.push(storyId);
+        await user.save();
+        res.status(200).json({ message: 'Story added to reading list' });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to add story to reading list' });
+    }
+}
+>>>>>>> 12ceae719099a6d69fad58607585ebe13eac246e
