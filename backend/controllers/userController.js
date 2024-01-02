@@ -2,7 +2,6 @@ const User = require('../models/User');
 
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { default: sendMail } = require('./mail/node_mailer');
 
 
 exports.register = async (req, res) => {
@@ -293,16 +292,6 @@ exports.logout = async (req, res) => {
 
 
 
-exports.forgotPassword = async (req, res) => {
-    try {
-        console.log(req.body)
-        sendMail();
-        res.send(req.body);
-    }
-    catch (error) {
-        res.status(500).json({ error: error });
-    }
-}
 
 exports.bookmarkStory = async (req, res) => {
     const userId = req.userId;
@@ -323,4 +312,3 @@ exports.bookmarkStory = async (req, res) => {
         res.status(500).json({ error: 'Failed to add story to reading list' });
     }
 }
->>>>>>> 12ceae719099a6d69fad58607585ebe13eac246e
